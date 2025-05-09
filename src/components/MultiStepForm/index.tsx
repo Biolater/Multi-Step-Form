@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MultiStepFormImage from "./MultiStepFormImage";
 import MultiStepFormContent from "./MultiStepFormContent";
+import { FormProvider } from "./FormContext";
 
 const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -16,11 +17,13 @@ const MultiStepForm = () => {
   return (
     <div className="flex flex-col md:flex-row w-full h-screen">
       <MultiStepFormImage currentStep={currentStep} />
-      <MultiStepFormContent
-        currentStep={currentStep}
-        handleGoBack={handleGoBack}
-        handleNext={handleNext}
-      />
+      <FormProvider>
+        <MultiStepFormContent
+          currentStep={currentStep}
+          handleGoBack={handleGoBack}
+          handleNext={handleNext}
+        />
+      </FormProvider>
     </div>
   );
 };
