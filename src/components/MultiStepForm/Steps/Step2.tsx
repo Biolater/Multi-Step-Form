@@ -11,8 +11,8 @@ const OPTIONS = [
 
 const Step2 = () => {
   return (
-    <div className="p-4 flex-1 relative">
-      <div className="shadow-lg -mt-18 p-5 bg-white rounded-lg flex flex-col gap-4">
+    <div className="flex-1 relative">
+      <div className="shadow-lg md:shadow-none -mt-18 md:m-0 p-5 bg-white rounded-lg flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <h3 className="text-xl font-bold text-primary-marine-blue">
             Select your plan

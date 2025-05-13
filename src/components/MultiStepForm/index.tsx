@@ -15,15 +15,17 @@ const MultiStepForm = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full h-screen">
-      <MultiStepFormImage currentStep={currentStep} />
-      <FormProvider>
-        <MultiStepFormContent
-          currentStep={currentStep}
-          handleGoBack={handleGoBack}
-          handleNext={handleNext}
-        />
-      </FormProvider>
+    <div className="w-full h-screen md:flex md:items-center md:justify-center ">
+      <div className="flex h-full md:rounded-xl bg-white md:max-w-4xl md:max-h-[90%] w-full flex-col md:flex-row">
+        <MultiStepFormImage currentStep={currentStep} />
+        <FormProvider>
+          <MultiStepFormContent
+            currentStep={currentStep}
+            handleGoBack={handleGoBack}
+            handleNext={handleNext}
+          />
+        </FormProvider>
+      </div>
     </div>
   );
 };
