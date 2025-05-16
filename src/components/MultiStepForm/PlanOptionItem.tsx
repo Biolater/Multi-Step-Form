@@ -5,6 +5,7 @@ interface PlanOptionItemProps {
   price: string;
   isSelected: boolean;
   icon: string;
+  onClick?: () => void;
 }
 
 const PlanOptionItem: FC<PlanOptionItemProps> = ({
@@ -12,9 +13,13 @@ const PlanOptionItem: FC<PlanOptionItemProps> = ({
   price,
   isSelected,
   icon,
+  onClick,
 }) => {
   return (
-    <div className="p-4 cursor-pointer border border-neutral-light-gray flex items-center gap-4 rounded-lg">
+    <div 
+      className={`p-4 cursor-pointer border ${isSelected ? 'border-primary-purplish-blue bg-neutral-alabaster' : 'border-neutral-light-gray'} flex items-center gap-4 rounded-lg`}
+      onClick={onClick}
+    >
       <div className="size-10 flex items-center justify-center">
         <img className="size-full" src={icon} alt={title} />
       </div>

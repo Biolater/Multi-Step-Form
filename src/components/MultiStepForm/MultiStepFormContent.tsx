@@ -12,14 +12,12 @@ const MultiStepFormContent = ({
   handleGoBack,
   handleNext,
 }: MultiStepFormContentProps) => {
-  const showGoBackButton = currentStep > 1;
-  const showNextButton = currentStep < 4;
   return (
-    <div className="flex flex-col basis-3/4 md:justify-center">
+    <div className="flex flex-col basis-3/4 md:basis-[70%] md:justify-center">
       <div className="bg-white p-4">
-        {currentStep === 1 && <Step1 />}
-        {currentStep === 2 && <Step2 />}
-        <div className="md:flex justify-end hidden mt-4">
+        {currentStep === 1 && <Step1 handleNext={handleNext} />}
+        {currentStep === 2 && <Step2 handleGoBack={handleGoBack} handleNext={handleNext} />}
+{/*         <div className="md:flex justify-end hidden mt-4">
           {showGoBackButton && (
             <button
               onClick={handleGoBack}
@@ -36,9 +34,9 @@ const MultiStepFormContent = ({
               Next Step
             </button>
           )}
-        </div>
+        </div> */}
       </div>
-      <div className="bg-white p-4 mt-auto flex md:hidden">
+{/*       <div className="bg-white p-4 mt-auto flex md:hidden">
         {showGoBackButton && (
           <button
             onClick={handleGoBack}
@@ -55,7 +53,7 @@ const MultiStepFormContent = ({
             Next Step
           </button>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
