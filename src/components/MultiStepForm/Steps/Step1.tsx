@@ -1,6 +1,9 @@
 import { useFormContext } from "../FormContext";
 import { useState } from "react";
 import step1Schema from "../../../schemas/step1.schema";
+import FormInput from "../../common/FormInput";
+import Button from "../../common/Button";
+import StepHeader from "../../common/StepHeader";
 interface Step1Props {
   handleNext: () => void;
 }
@@ -60,84 +63,43 @@ const Step1 = ({ handleNext }: Step1Props) => {
 
   return (
     <div className="flex-1 relative">
-      <div className="shadow-lg md:shadow-none -mt-18 md:m-0 p-5 bg-white rounded-lg flex flex-col gap-4">
-        <div className="flex flex-col gap-2">
-          <h3 className="text-xl font-bold text-primary-marine-blue">
-            Personal info
-          </h3>
-          <p className="text-neutral-cool-gray text-sm">
-            Please provide your name, email address, and phone number.
-          </p>
-        </div>
+      <div className="shadow-lg md:shadow-none -mt-18 md:m-0 p-5 md:p-0 bg-white rounded-lg flex flex-col gap-4">
+        <StepHeader
+          title="Personal info"
+          description="Please provide your name, email address, and phone number."
+        />
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col gap-5">
-            <div className="flex flex-col gap-2">
-              <label
-                className="text-sm text-primary-marine-blue"
-                htmlFor="name"
-              >
-                Name
-              </label>
-              <input
-                className="border border-neutral-light-gray rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary-purplish-blue transition-all duration-300"
-                name="name"
-                value={name}
-                onChange={handleNameChange}
-                type="text"
-                placeholder="e.g. Stephen King"
-                required
-              />
-              {errors.name && (
-                <p className="text-red-500 text-xs mt-1">{errors.name[0]}</p>
-              )}
-            </div>
-            <div className="flex flex-col gap-2">
-              <label
-                className="text-sm text-primary-marine-blue"
-                htmlFor="email"
-              >
-                Email Address
-              </label>
-              <input
-                className="border border-neutral-light-gray rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary-purplish-blue transition-all duration-300"
-                name="email"
-                value={email}
-                onChange={handleEmailChange}
-                type="email"
-                placeholder="e.g. stephenking@lorem.com"
-                required
-              />
-              {errors.email && (
-                <p className="text-red-500 text-xs mt-1">{errors.email[0]}</p>
-              )}
-            </div>
-            <div className="flex flex-col gap-2">
-              <label
-                className="text-sm text-primary-marine-blue"
-                htmlFor="phone"
-              >
-                Phone Number
-              </label>
-              <input
-                className="border border-neutral-light-gray rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary-purplish-blue transition-all duration-300"
-                name="phone"
-                value={phoneNumber}
-                onChange={handlePhoneNumberChange}
-                type="tel"
-                placeholder="Phone Number"
-                required
-              />
-              {errors.phone && (
-                <p className="text-red-500 text-xs mt-1">{errors.phone[0]}</p>
-              )}
-            </div>
+            <FormInput
+              label="Name"
+              name="name"
+              value={name}
+              onChange={handleNameChange}
+              placeholder="e.g. Stephen King"
+              error={errors.name ? errors.name[0] : undefined}
+            />
+            <FormInput
+              label="Email Address"
+              name="email"
+              value={email}
+              onChange={handleEmailChange}
+              type="email"
+              placeholder="e.g. stephenking@lorem.com"
+              error={errors.email ? errors.email[0] : undefined}
+            />
+            <FormInput
+              label="Phone Number"
+              name="phone"
+              value={phoneNumber}
+              onChange={handlePhoneNumberChange}
+              type="tel"
+              placeholder="e.g. +1 234 567 890"
+              error={errors.phone ? errors.phone[0] : undefined}
+            />
             <div className="flex justify-end mt-4">
-              <button
-                type="submit"
-                className="p-2 ms-auto bg-primary-purplish-blue text-white rounded-md"
-              >
+              <Button type="submit" variant="primary" className="ms-auto">
                 Next Step
-              </button>
+              </Button>
             </div>
           </div>
         </form>

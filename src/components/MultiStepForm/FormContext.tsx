@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface FormContextType {
   currentStep: number;
@@ -13,6 +13,8 @@ interface FormContextType {
   handleSetPlan: (plan: "Arcade" | "Advanced" | "Pro") => void;
   billingPeriod: "monthly" | "yearly";
   handleSetBillingPeriod: (period: "monthly" | "yearly") => void;
+  total: number;
+  handleSetTotal: (total: number) => void;
   addons: {
     onlineService: boolean;
     largerStorage: boolean;
@@ -39,6 +41,7 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">(
     "monthly"
   );
+  const [total, setTotal] = useState(0);
   const [addons, setAddons] = useState({
     onlineService: false,
     largerStorage: false,
@@ -66,6 +69,10 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
     setPhoneNumber(phoneNumber);
   };
 
+  const handleSetTotal = (total: number) => {
+    setTotal(total);
+  };
+
   const handleSetAddons = (addons: {
     onlineService: boolean;
     largerStorage: boolean;
@@ -74,6 +81,18 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
   }) => {
     setAddons(addons);
   };
+
+  useEffect(() => {
+    console.log({
+      name,
+      email,
+      phoneNumber,
+      plan,
+      billingPeriod,
+      addons,
+      total,
+    });
+  }, [name, email, phoneNumber, plan, billingPeriod, addons, total]);
 
   return (
     <FormContext.Provider
@@ -90,6 +109,8 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
         handleSetPlan,
         billingPeriod,
         handleSetBillingPeriod,
+        total,
+        handleSetTotal,
         addons,
         handleSetAddons,
       }}
