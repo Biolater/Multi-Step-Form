@@ -19,14 +19,11 @@ interface FormContextType {
     onlineService: boolean;
     largerStorage: boolean;
     customizableProfile: boolean;
-
-    total: number;
   };
   handleSetAddons: (addons: {
     onlineService: boolean;
     largerStorage: boolean;
     customizableProfile: boolean;
-    total: number;
   }) => void;
 }
 
@@ -46,7 +43,6 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
     onlineService: false,
     largerStorage: false,
     customizableProfile: false,
-    total: 0,
   });
 
   const handleSetPlan = (plan: "Arcade" | "Advanced" | "Pro") => {
@@ -70,14 +66,13 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const handleSetTotal = (total: number) => {
-    setTotal(total);
+    setTotal((prev) => prev + total);
   };
 
   const handleSetAddons = (addons: {
     onlineService: boolean;
     largerStorage: boolean;
     customizableProfile: boolean;
-    total: number;
   }) => {
     setAddons(addons);
   };
