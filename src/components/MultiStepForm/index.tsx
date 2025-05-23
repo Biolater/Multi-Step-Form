@@ -15,7 +15,7 @@ const MultiStepForm = () => {
   };
 
   return (
-    <div className="w-full h-screen md:flex md:items-center md:justify-center ">
+    <div className="w-full md:h-screen md:flex md:items-center md:justify-center ">
       <div className="flex h-full md:rounded-xl bg-white md:max-w-4xl md:max-h-[90%] w-full flex-col md:flex-row">
         <MultiStepFormImage currentStep={currentStep} />
         <FormProvider>

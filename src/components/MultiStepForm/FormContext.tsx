@@ -9,7 +9,7 @@ interface FormContextType {
   handleSetEmail: (email: string) => void;
   phoneNumber: string;
   handleSetPhoneNumber: (phoneNumber: string) => void;
-  plan: "Arcade" | "Advanced" | "Pro";
+  plan: "Arcade" | "Advanced" | "Pro" | null;
   handleSetPlan: (plan: "Arcade" | "Advanced" | "Pro") => void;
   billingPeriod: "monthly" | "yearly";
   handleSetBillingPeriod: (period: "monthly" | "yearly") => void;
@@ -37,7 +37,7 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [plan, setPlan] = useState<"Arcade" | "Advanced" | "Pro">("Arcade");
+  const [plan, setPlan] = useState<"Arcade" | "Advanced" | "Pro" | null>(null);
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">(
     "monthly"
   );

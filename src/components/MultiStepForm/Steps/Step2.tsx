@@ -42,27 +42,33 @@ interface Step2Props {
 }
 
 const Step2 = ({ handleGoBack, handleNext }: Step2Props) => {
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
-
   const {
     handleSetPlan,
     handleSetBillingPeriod,
     handleSetTotal,
     billingPeriod,
+    plan
   } = useFormContext();
+
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(plan);
+
+
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // Validate selection before proceeding
     if (selectedPlan) {
-      const price = OPTIONS.find(
+      const selectedPlanInfo = OPTIONS.find(
         (option) => option.title === selectedPlan
-      )?.priceValue;
-      if (!price) {
+      );
+      if (!selectedPlanInfo) {
         alert("Please select a plan");
         return;
       }
-      const total = price * (billingPeriod === "monthly" ? 1 : 12);
+      const total =
+        billingPeriod === "monthly"
+          ? selectedPlanInfo.priceValue
+          : selectedPlanInfo.yearlyPriceValue;
       handleSetPlan(selectedPlan as "Arcade" | "Advanced" | "Pro");
       handleSetBillingPeriod(billingPeriod as "monthly" | "yearly");
       handleSetTotal(total);

@@ -6,7 +6,7 @@ interface MultiStepFormImageProps {
 
 const MultiStepFormImage = ({ currentStep }: MultiStepFormImageProps) => {
   return (
-    <div className="basis-1/4 md:basis-[30%] flex-1 md:py-4 md:ps-4">
+    <div className="h-36 md:h-auto md:basis-[30%] md:flex-1 md:py-4 md:ps-4">
       <div className="relative w-full h-full">
         <div className="absolute flex md:flex-col gap-4 md:gap-6 left-1/2 -translate-x-1/2 top-6 md:top-8 md:w-full md:left-0 md:-translate-x-0 transform">
           {Array.from({ length: 4 }, (_, index) => (

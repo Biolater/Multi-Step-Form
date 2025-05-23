@@ -3,7 +3,7 @@ import MultiStepForm from "./components/MultiStepForm";
 
 function App() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
+    <main className="min-h-screen md:flex md:items-center md:justify-center">
       <MultiStepForm />
     </main>
   );
